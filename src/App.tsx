@@ -1,5 +1,10 @@
+import Router from "./router";
 function App() {
-  return <>Heisann</>;
+  return (
+    <>
+      <Router />
+    </>
+  );
 }
 
 export default App;
