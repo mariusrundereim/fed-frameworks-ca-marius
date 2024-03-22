@@ -33,6 +33,8 @@ type StoreState = {
   cart: CartItem[];
   fetchProducts: () => Promise<void>;
   addProductToCart: (productId: string, quantity: number) => void;
+  removeProductFromCart: (productId: string) => void;
+  clearCart: () => void;
   totalPrice: () => number;
 };
 
@@ -94,6 +96,19 @@ export const useStore = create<StoreState>()(
                 total + item.price * item.quantity,
               0
             );
+        },
+
+        removeProductFromCart: (productId: string) => {
+          set((state) => {
+            const updatedCart = state.cart.filter(
+              (item) => item.id !== productId
+            );
+            return { cart: updatedCart };
+          });
+        },
+
+        clearCart: () => {
+          set({ cart: [] });
         },
       }),
       { name: "MyStore" }
