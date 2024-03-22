@@ -1,15 +1,29 @@
-import { create, StateCreator } from "zustand";
+import { create } from "zustand";
 import { BASE_URL } from "../../api";
+import { devtools, persist } from "zustand/middleware";
 
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-};
-
-type CartItem = {
+export type Product = {
   id: string;
   title: string;
+  description: string;
+  price: number;
+  discountedPrice: number;
+  image: {
+    url: string;
+    alt?: string;
+  };
+  rating: number;
+  tags: string[];
+  reviews: {
+    id: string;
+    username: string;
+    rating: number;
+    description: string;
+  }[];
+};
+
+export type CartItem = {
+  id: string;
   price: number;
   quantity: number;
 };
@@ -22,57 +36,69 @@ type StoreState = {
   totalPrice: () => number;
 };
 
-export const useStore = create<StoreState>((set) => ({
-  products: [],
-  cart: [],
+type ApiResponse = {
+  data: Product[];
+  meta: any;
+};
 
-  fetchProducts: async () => {
-    try {
-      const response = await fetch(BASE_URL);
-      const products: Product[] = await response.json();
-      console.log(products);
-      set({ products });
-    } catch (error) {
-      console.error("Failed to fetch products:", error);
-    }
-  },
+export const useStore = create<StoreState>()(
+  devtools(
+    persist(
+      (set) => ({
+        products: [],
+        cart: [],
 
-  addProductToCart: (productId: string, quantity: number) => {
-    set((state) => {
-      const productToAdd = state.products.find(
-        (product) => product.id === productId
-      );
-      if (!productToAdd) return state; // Make sure to return the current state instead of undefined
+        fetchProducts: async () => {
+          try {
+            const response = await fetch(BASE_URL);
+            const { data }: ApiResponse = await response.json();
+            console.log("Console log data:", data);
+            set({ products: data });
+          } catch (error) {
+            console.error("Failed to fetch products:", error);
+          }
+        },
 
-      const cartItemIndex = state.cart.findIndex(
-        (item) => item.id === productId
-      );
-      if (cartItemIndex > -1) {
-        // Product already in cart, update quantity
-        const updatedCart = state.cart.map((item) =>
-          item.id === productId
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-        return { cart: updatedCart };
-      } else {
-        // Product not in cart, add new item with title
-        const newCartItem: CartItem = {
-          id: productToAdd.id,
-          title: productToAdd.name, // Assuming you want to use the product's name as title
-          price: productToAdd.price,
-          quantity: quantity,
-        };
-        return { cart: [...state.cart, newCartItem] };
-      }
-    });
-  },
-  totalPrice: (): number => {
-    return useStore
-      .getState()
-      .cart.reduce(
-        (total: number, item: CartItem) => total + item.price * item.quantity,
-        0
-      );
-  },
-}));
+        addProductToCart: (productId: string, quantity: number) => {
+          set((state) => {
+            const productToAdd = state.products.find(
+              (product) => product.id === productId
+            );
+            if (!productToAdd) return state; // Make sure to return the current state instead of undefined
+
+            const cartItemIndex = state.cart.findIndex(
+              (item) => item.id === productId
+            );
+            if (cartItemIndex > -1) {
+              // Product already in cart, update quantity
+              const updatedCart = state.cart.map((item) =>
+                item.id === productId
+                  ? { ...item, quantity: item.quantity + quantity }
+                  : item
+              );
+              return { cart: updatedCart };
+            } else {
+              // Product not in cart, add new item with title
+              const newCartItem: CartItem = {
+                id: productToAdd.id, // Assuming you want to use the product's name as title
+                price: productToAdd.price,
+                quantity: quantity,
+              };
+              return { cart: [...state.cart, newCartItem] };
+            }
+          });
+        },
+        totalPrice: (): number => {
+          return useStore
+            .getState()
+            .cart.reduce(
+              (total: number, item: CartItem) =>
+                total + item.price * item.quantity,
+              0
+            );
+        },
+      }),
+      { name: "MyStore" }
+    )
+  )
+);
