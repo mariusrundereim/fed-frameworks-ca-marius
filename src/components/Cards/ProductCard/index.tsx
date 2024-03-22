@@ -1,3 +1,4 @@
+import { useStore } from "../../../services/store/store";
 import { Product } from "../../../services/store/store";
 
 type ProductCardProps = {
@@ -6,6 +7,12 @@ type ProductCardProps = {
 
 function ProductCard({ product }: ProductCardProps) {
   const { title, price } = product;
+  const addProductToCart = useStore((state) => state.addProductToCart);
+
+  const handleAddToCart = () => {
+    addProductToCart(product.id, 1);
+  };
+
   return (
     <>
       <div>
@@ -13,7 +20,7 @@ function ProductCard({ product }: ProductCardProps) {
 
         <h1>{title}</h1>
         <p>{price}</p>
-        <button>Add to Cart</button>
+        <button onClick={handleAddToCart}>Add to Cart</button>
       </div>
     </>
   );

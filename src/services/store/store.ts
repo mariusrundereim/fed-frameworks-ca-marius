@@ -88,6 +88,7 @@ export const useStore = create<StoreState>()(
             }
           });
         },
+
         totalPrice: (): number => {
           return useStore
             .getState()

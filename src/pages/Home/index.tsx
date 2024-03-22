@@ -11,15 +11,11 @@ function Home() {
   return (
     <>
       <div>
+        <h3>Total Price: ${totalPrice()}</h3>
         <h2>Products</h2>
         {products.map((product) => (
-          <>
-            <h6>yo</h6>
-            <ProductCard key={product.id} product={product} />
-          </>
+          <ProductCard key={product.id} product={product} />
         ))}
-
-        <h3>Total Price: ${totalPrice()}</h3>
       </div>
     </>
   );
