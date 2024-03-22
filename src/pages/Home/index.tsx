@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useStore } from "../../services/store/store";
 import ProductCard from "../../components/Cards/ProductCard";
-
+import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 function Home() {
   const { products, fetchProducts, totalPrice } = useStore();
   useEffect(() => {
@@ -10,13 +11,15 @@ function Home() {
 
   return (
     <>
-      <div>
+      <Box component="main">
         <h3>Total Price: ${totalPrice()}</h3>
         <h2>Products</h2>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+        <Grid component="section" container direction="row" spacing={2}>
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 }

@@ -64,13 +64,12 @@ export const useStore = create<StoreState>()(
             const productToAdd = state.products.find(
               (product) => product.id === productId
             );
-            if (!productToAdd) return state; // Make sure to return the current state instead of undefined
+            if (!productToAdd) return state;
 
             const cartItemIndex = state.cart.findIndex(
               (item) => item.id === productId
             );
             if (cartItemIndex > -1) {
-              // Product already in cart, update quantity
               const updatedCart = state.cart.map((item) =>
                 item.id === productId
                   ? { ...item, quantity: item.quantity + quantity }
@@ -78,9 +77,8 @@ export const useStore = create<StoreState>()(
               );
               return { cart: updatedCart };
             } else {
-              // Product not in cart, add new item with title
               const newCartItem: CartItem = {
-                id: productToAdd.id, // Assuming you want to use the product's name as title
+                id: productToAdd.id,
                 price: productToAdd.price,
                 quantity: quantity,
               };
@@ -88,7 +86,6 @@ export const useStore = create<StoreState>()(
             }
           });
         },
-
         totalPrice: (): number => {
           return useStore
             .getState()
