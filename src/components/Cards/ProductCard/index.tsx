@@ -18,14 +18,12 @@ function ProductCard({ product }: ProductCardProps) {
   return (
     <>
       <Box component="article" sx={{ border: "1px solid red" }}>
-        <Box>
-          <CardMedia
-            component="img"
-            image={image.url}
-            alt="No image text"
-            sx={{ maxWidth: "100px", objectFit: "cover" }}
-          />
-        </Box>
+        <CardMedia
+          component="img"
+          image={image.url}
+          alt="No image text"
+          sx={{ maxWidth: "100px", objectFit: "cover" }}
+        />
         <Box>
           <h1>{title}</h1>
           <p>{price}</p>
