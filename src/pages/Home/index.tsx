@@ -5,7 +5,7 @@ import SearchBar from "../../components/SearchBar";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
-
+import { Stack } from "@mui/material";
 function Home() {
   const { products, fetchProducts } = useStore();
   useEffect(() => {
@@ -16,8 +16,11 @@ function Home() {
     <>
       <Box component="main">
         <SearchBar />
-        <Typography variant="h4">Products</Typography>
-        <Typography variant="h4">{products.length} items</Typography>
+
+        <Stack direction="row" justifyContent="space-between">
+          <Typography variant="h4">Products</Typography>
+          <Typography variant="h4">{products.length} items</Typography>
+        </Stack>
 
         <Grid container spacing={4}>
           {products.map((product) => (
