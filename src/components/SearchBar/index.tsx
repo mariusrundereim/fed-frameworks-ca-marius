@@ -12,7 +12,11 @@ function SearchBar() {
         noValidate
         autoComplete="off"
       >
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <TextField
+          id="outlined-basic"
+          label="Search for products"
+          variant="outlined"
+        />
       </Box>
     </>
   );
