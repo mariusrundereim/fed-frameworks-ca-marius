@@ -58,7 +58,12 @@ function ProductCard({ product }: ProductCardProps) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" variant="outlined" onClick={handleAddToCart}>
+          <Button
+            size="small"
+            variant="outlined"
+            fullWidth
+            onClick={handleAddToCart}
+          >
             Add to Cart
           </Button>
         </CardActions>
