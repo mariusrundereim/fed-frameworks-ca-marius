@@ -18,9 +18,12 @@ function Home() {
         <SearchBar />
         <Typography variant="h4">Products</Typography>
         <Typography variant="h4">{products.length} items</Typography>
-        <Grid component="section" container>
+
+        <Grid container spacing={4}>
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Grid item sm={3} key={product.id}>
+              <ProductCard product={product} />
+            </Grid>
           ))}
         </Grid>
       </Box>
