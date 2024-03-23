@@ -36,6 +36,7 @@ type StoreState = {
   removeProductFromCart: (productId: string) => void;
   clearCart: () => void;
   totalPrice: () => number;
+  getProduct: (productId: string) => Product | undefined;
 };
 
 type ApiResponse = {
@@ -46,7 +47,7 @@ type ApiResponse = {
 export const useStore = create<StoreState>()(
   devtools(
     persist(
-      (set) => ({
+      (set, get) => ({
         products: [],
         cart: [],
 
@@ -59,6 +60,11 @@ export const useStore = create<StoreState>()(
           } catch (error) {
             console.error("Failed to fetch products:", error);
           }
+        },
+
+        getProduct: (productId: string) => {
+          const products = get().products;
+          return products.find((product) => product.id === productId);
         },
 
         addProductToCart: (productId: string, quantity: number) => {
