@@ -3,6 +3,7 @@ import { Product } from "../../../services/store/store";
 import { Box } from "@mui/material";
 import { Button } from "@mui/material";
 import { CardMedia } from "@mui/material";
+import { AspectRatio } from "@mui/joy";
 type ProductCardProps = {
   product: Product;
 };
@@ -18,12 +19,20 @@ function ProductCard({ product }: ProductCardProps) {
   return (
     <>
       <Box component="article" sx={{ border: "1px solid red" }}>
-        <CardMedia
-          component="img"
-          image={image.url}
-          alt="No image text"
-          sx={{ maxWidth: "100px", objectFit: "cover" }}
-        />
+        <AspectRatio ratio="1" sx={{ width: "100%" }}>
+          <CardMedia
+            component="img"
+            image={image.url}
+            alt="No image text"
+            sx={{
+              width: "100%",
+              maxHeight: "200px",
+              objectPosition: "center",
+              objectFit: "cover",
+            }}
+          />
+        </AspectRatio>
+
         <Box>
           <h1>{title}</h1>
           <p>{price}</p>
