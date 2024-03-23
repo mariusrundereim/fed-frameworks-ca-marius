@@ -40,13 +40,19 @@ function ProductCard({ product }: ProductCardProps) {
         </AspectRatio>
 
         <CardContent>
-          <Rating
-            name="read-only"
-            value={rating}
-            precision={0.5}
-            size="small"
-            readOnly
-          />
+          {rating ? (
+            <Rating
+              name="read-only"
+              value={rating}
+              precision={0.5}
+              size="small"
+              readOnly
+            />
+          ) : (
+            <Typography variant="body2" color="text.secondary">
+              No rating
+            </Typography>
+          )}
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
