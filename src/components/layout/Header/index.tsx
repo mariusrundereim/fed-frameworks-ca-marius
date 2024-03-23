@@ -1,10 +1,9 @@
 import { useStore } from "../../../services/store/store";
-import { AppBar, Box, IconButton, Typography } from "@mui/material";
-import { MenuSharp } from "@mui/icons-material";
+import { AppBar, Box, Typography } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { Stack } from "@mui/material";
-
+import BrandLogo from "../../Logo";
 function Header() {
   const cartItemCount = useStore((state) =>
     state.cart.reduce((total, item) => total + item.quantity, 0)
@@ -12,17 +11,9 @@ function Header() {
   return (
     <>
       <Box>
-        <AppBar position="static">
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuSharp />
-          </IconButton>
-          <Stack spacing={2} direction="row">
+        <AppBar position="static" sx={{ minHeight: "50px" }}>
+          <BrandLogo />
+          <Stack spacing={1} direction="row">
             <Typography>Cart</Typography>
             <Badge
               color="secondary"
