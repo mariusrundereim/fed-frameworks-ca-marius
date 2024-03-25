@@ -1,6 +1,5 @@
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
-import { themeOne } from "./ui/theme";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

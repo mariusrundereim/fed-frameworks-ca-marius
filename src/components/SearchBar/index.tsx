@@ -1,7 +1,13 @@
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import React from "react";
 
-function SearchBar() {
+type SearchBarProps = {
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+function SearchBar({ value, onChange }: SearchBarProps) {
   return (
     <>
       <Box
@@ -14,8 +20,9 @@ function SearchBar() {
       >
         <TextField
           id="outlined-basic"
-          label="Search for products"
           variant="outlined"
+          value={value}
+          onChange={onChange}
         />
       </Box>
     </>

@@ -37,6 +37,8 @@ type StoreState = {
   clearCart: () => void;
   totalPrice: () => number;
   getProduct: (productId: string) => Product | undefined;
+  increaseQuantity: (productId: string) => void;
+  decreaseQuantity: (productId: string) => void;
 };
 
 type ApiResponse = {
@@ -102,6 +104,30 @@ export const useStore = create<StoreState>()(
                 total + item.price * item.quantity,
               0
             );
+        },
+
+        // Increase qantity from item
+        increaseQuantity: (productId: string) => {
+          set((state) => {
+            const updatedCart = state.cart.map((item) =>
+              item.id === productId
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            );
+            return { cart: updatedCart };
+          });
+        },
+
+        // Decrease qantity from item
+        decreaseQuantity: (productId: string) => {
+          set((state) => {
+            const updatedCart = state.cart.map((item) =>
+              item.id === productId
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
+            );
+            return { cart: updatedCart };
+          });
         },
 
         removeProductFromCart: (productId: string) => {
