@@ -9,13 +9,20 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
 interface CartCardProps {
   item: CartItem;
-  // Increase qty
-  // Decrease qty
 }
 
 function CartCard({ item }: CartCardProps) {
-  const { price } = item;
+  const { price, quantity } = item;
   const product = useStore.getState().getProduct(item.id);
+  const deleteItem = useStore((state) => state.removeProductFromCart);
+  const handleDeleteItem = () => deleteItem(item.id);
+
+  //Quantity
+  const increaseQty = useStore((state) => state.increaseQuantity);
+  const decreaseQty = useStore((state) => state.decreaseQuantity);
+
+  const handleIncreaseQty = () => increaseQty(item.id);
+  const handleDecreaseQty = () => decreaseQty(item.id);
   return (
     <>
       <Box
@@ -46,12 +53,12 @@ function CartCard({ item }: CartCardProps) {
                 size="small"
                 aria-label="Basic button group"
               >
-                <Button>-</Button>
-                <Button variant="outlined">4</Button>
-                <Button>+</Button>
+                <Button onClick={handleDecreaseQty}>-</Button>
+                <Button variant="outlined">{quantity}</Button>
+                <Button onClick={handleIncreaseQty}>+</Button>
               </ButtonGroup>
-              <Typography variant="h4">{price}</Typography>
-              <DeleteIcon />
+              <Typography variant="h4">{price * quantity}</Typography>
+              <DeleteIcon onClick={handleDeleteItem} />
             </Box>
           </Box>
         </Paper>

@@ -11,17 +11,18 @@ function Cart() {
   return (
     <>
       <Typography variant="h4">Cart</Typography>
-      <Typography variant="h4">{total} NOK</Typography>
       <Box>
         <Button variant="contained" onClick={clearCart}>
           Clear cart
         </Button>
+        <Button variant="contained">Checkout</Button>
       </Box>
       <Stack direction="column">
         {cart.map((item) => (
           <CartCard key={item.id} item={item} />
         ))}
       </Stack>
+      <Typography variant="h4">{total} NOK</Typography>
     </>
   );
 }
