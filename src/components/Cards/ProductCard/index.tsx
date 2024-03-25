@@ -29,10 +29,11 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <>
-      <Card onClick={handleCardClick}>
+      <Card>
         <AspectRatio ratio="1">
           <CardMedia
             component="img"
+            onClick={handleCardClick}
             image={image.url}
             alt={title}
             sx={{ height: 1, width: 1 }}
