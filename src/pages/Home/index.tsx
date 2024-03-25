@@ -32,7 +32,7 @@ function Home() {
 
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h4">Products</Typography>
-          <Typography variant="h4">{products.length} items</Typography>
+          <Typography variant="h4">{searchResults.length} items</Typography>
         </Stack>
 
         <Grid container spacing={4}>
