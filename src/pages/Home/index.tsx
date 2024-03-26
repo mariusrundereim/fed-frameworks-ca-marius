@@ -36,7 +36,7 @@ function Home() {
         </Stack>
 
         <Grid container spacing={4}>
-          {searchResults.map((product) => (
+          {products.map((product) => (
             <Grid item sm={4} key={product.id}>
               <ProductCard product={product} />
             </Grid>

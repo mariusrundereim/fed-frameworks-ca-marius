@@ -1,3 +1,4 @@
+import { useTheme, ThemeProvider } from "@mui/material";
 import { useStore } from "../../../services/store/store";
 import { Product } from "../../../services/store/store";
 import { Button } from "@mui/material";
@@ -14,6 +15,7 @@ type ProductCardProps = {
 };
 
 function ProductCard({ product }: ProductCardProps) {
+  const theme = useTheme();
   const { title, price, discountedPrice, image, rating } = product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
@@ -29,52 +31,54 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <>
-      <Card>
-        <AspectRatio ratio="1">
-          <CardMedia
-            component="img"
-            onClick={handleCardClick}
-            image={image.url}
-            alt={title}
-            sx={{ height: 1, width: 1 }}
-          />
-        </AspectRatio>
-
-        <CardContent>
-          {rating ? (
-            <Rating
-              name="read-only"
-              value={rating}
-              precision={0.5}
-              size="small"
-              readOnly
+      <ThemeProvider theme={theme}>
+        <Card>
+          <AspectRatio ratio="1">
+            <CardMedia
+              component="img"
+              onClick={handleCardClick}
+              image={image.url}
+              alt={title}
+              sx={{ height: 1, width: 1 }}
             />
-          ) : (
-            <Typography variant="body2" color="text.secondary">
-              No rating
+          </AspectRatio>
+
+          <CardContent>
+            {rating ? (
+              <Rating
+                name="read-only"
+                value={rating}
+                precision={0.5}
+                size="small"
+                readOnly
+              />
+            ) : (
+              <Typography variant="body2" color="text.secondary">
+                No rating
+              </Typography>
+            )}
+            <Typography gutterBottom variant="h5" component="div">
+              {title}
             </Typography>
-          )}
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {price}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {discountedPrice}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button
-            size="small"
-            variant="outlined"
-            fullWidth
-            onClick={handleAddToCart}
-          >
-            Add to Cart
-          </Button>
-        </CardActions>
-      </Card>
+            <Typography variant="body2" color="text.secondary">
+              {price}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {discountedPrice}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              size="small"
+              variant="outlined"
+              fullWidth
+              onClick={handleAddToCart}
+            >
+              Add to Cart
+            </Button>
+          </CardActions>
+        </Card>
+      </ThemeProvider>
     </>
   );
 }
