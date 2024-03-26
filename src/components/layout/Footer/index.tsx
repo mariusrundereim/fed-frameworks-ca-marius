@@ -1,7 +1,17 @@
+import { Box } from "@mui/material";
 function Footer() {
   return (
     <>
-      <h3>Fooooter</h3>
+      <Box
+        component="footer"
+        minHeight="10rem"
+        width="100%"
+        display="flex"
+        alignItems="center"
+        sx={{ border: "2px solid grey" }}
+      >
+        Foo
+      </Box>
     </>
   );
 }

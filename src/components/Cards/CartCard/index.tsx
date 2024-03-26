@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
+
 interface CartCardProps {
   item: CartItem;
 }
@@ -14,15 +15,17 @@ interface CartCardProps {
 function CartCard({ item }: CartCardProps) {
   const { price, quantity } = item;
   const product = useStore.getState().getProduct(item.id);
+
+  //Delete item
   const deleteItem = useStore((state) => state.removeProductFromCart);
   const handleDeleteItem = () => deleteItem(item.id);
 
-  //Quantity
+  //Qty item
   const increaseQty = useStore((state) => state.increaseQuantity);
   const decreaseQty = useStore((state) => state.decreaseQuantity);
-
   const handleIncreaseQty = () => increaseQty(item.id);
   const handleDecreaseQty = () => decreaseQty(item.id);
+
   return (
     <>
       <Box
