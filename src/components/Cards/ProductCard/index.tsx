@@ -74,7 +74,7 @@ function ProductCard({ product }: ProductCardProps) {
         <CardActions>
           <Button
             size="small"
-            variant="outlined"
+            variant="contained"
             fullWidth
             onClick={handleAddToCart}
           >

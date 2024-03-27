@@ -12,8 +12,21 @@ function Header() {
   return (
     <>
       <Box>
-        <AppBar position="static" sx={{ minHeight: "50px" }}>
-          <Stack direction="row" justifyContent="space-between" p="1rem">
+        <AppBar
+          position="fixed"
+          color="primary"
+          sx={{ minHeight: "50px", margin: "0 auto" }}
+        >
+          <Stack
+            display="flex"
+            justifyItems="center"
+            direction="row"
+            justifyContent="space-between"
+            p="1rem"
+            width="100%"
+            margin="0 auto"
+            sx={{ maxWidth: "1440px" }}
+          >
             <BrandLogo />
             <Link to="/cart">
               <Stack spacing={1} direction="row">

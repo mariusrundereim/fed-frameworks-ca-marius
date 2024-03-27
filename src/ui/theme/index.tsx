@@ -3,17 +3,24 @@ import { createTheme } from "@mui/material";
 export const themeOne = createTheme({
   palette: {
     mode: "light",
+    common: {
+      black: "#000",
+      white: "#fff",
+    },
     primary: {
-      main: "#689493",
-      light: "#91a8a8",
-      dark: "#556363",
+      main: "#00509d",
+      light: "#003f88",
+      dark: "#00296b",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#689493",
+      main: "#ffd500",
       light: "#91a8a8",
-      dark: "#556363",
-      contrastText: "#ffffff",
+      dark: "#fdc500",
+      contrastText: "#0d0a0b",
     },
+  },
+  shape: {
+    borderRadius: 3,
   },
 });

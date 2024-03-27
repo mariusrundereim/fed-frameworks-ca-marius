@@ -7,10 +7,21 @@ function Layout() {
   return (
     <>
       <Grid
-        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         <Header />
-        <Box padding="1rem" sx={{ flexGrow: 1 }}>
+        <Box
+          component="main"
+          padding="1rem"
+          margin="0 auto"
+          marginTop={8}
+          maxWidth="1440px"
+          sx={{ flexGrow: 1 }}
+        >
           <Outlet />
         </Box>
         <Footer />

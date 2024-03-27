@@ -31,7 +31,6 @@ function CartCard({ item }: CartCardProps) {
       <Box
         sx={{
           display: "flex",
-
           flexWrap: "wrap",
           "& > :not(style)": {
             m: 1,
