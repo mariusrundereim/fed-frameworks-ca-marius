@@ -1,9 +1,14 @@
-// Entry point for Reviews
 import ReviewList from "./ReviewList";
-function ProductReviewsContainer() {
+import { Product } from "../../../../services/store/store";
+
+type ProductReviewsContainerProps = {
+  product: Product;
+};
+
+function ProductReviewsContainer({ product }: ProductReviewsContainerProps) {
   return (
     <>
-      <ReviewList />
+      <ReviewList product={product} />
     </>
   );
 }
