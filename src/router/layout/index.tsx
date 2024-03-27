@@ -11,6 +11,7 @@ function Layout() {
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
+          width: "100%",
         }}
       >
         <Header />
@@ -20,6 +21,7 @@ function Layout() {
           margin="0 auto"
           marginTop={8}
           maxWidth="1440px"
+          minWidth="100%"
           sx={{ flexGrow: 1 }}
         >
           <Outlet />
