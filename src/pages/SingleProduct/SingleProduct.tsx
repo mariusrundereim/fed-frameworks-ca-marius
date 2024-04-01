@@ -15,7 +15,6 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
     <>
       <Box display="flex" flexDirection="column" width="100%">
         <ProductDetails product={product} />
-
         <ProductReviewsContainer product={product} />
       </Box>
     </>

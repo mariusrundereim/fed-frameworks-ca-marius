@@ -16,7 +16,7 @@ function ReviewList({ product }: ReviewListProps) {
         <React.Fragment key={review.id}>
           <ListItem alignItems="flex-start">
             <ListItemText
-              primary={review.username}
+              primary={review.description}
               secondary={
                 <>
                   <Typography
@@ -26,7 +26,7 @@ function ReviewList({ product }: ReviewListProps) {
                   >
                     {review.rating}
                   </Typography>
-                  — {review.description}
+                  — {review.username}
                 </>
               }
             />
