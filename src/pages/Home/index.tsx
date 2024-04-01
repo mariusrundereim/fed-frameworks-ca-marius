@@ -3,7 +3,6 @@ import { useStore } from "../../services/store/store";
 import ProductCard from "../../components/Cards/ProductCard";
 import SearchBar from "../../components/SearchBar";
 import { Grid } from "@mui/material";
-import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/material";
 
@@ -27,22 +26,20 @@ function Home() {
 
   return (
     <>
-      <Box component="main">
-        <SearchBar value={searchQuery} onChange={handleSearchChange} />
+      <SearchBar value={searchQuery} onChange={handleSearchChange} />
 
-        <Stack direction="row" justifyContent="space-between">
-          <Typography variant="h4">Products</Typography>
-          <Typography variant="h4">{searchResults.length} items</Typography>
-        </Stack>
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="h4">Products</Typography>
+        <Typography variant="h4">{searchResults.length} items</Typography>
+      </Stack>
 
-        <Grid container spacing={4}>
-          {products.map((product) => (
-            <Grid item sm={4} key={product.id}>
-              <ProductCard product={product} />
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
+      <Grid container spacing={4}>
+        {products.map((product) => (
+          <Grid item sm={4} key={product.id}>
+            <ProductCard product={product} />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 }

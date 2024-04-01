@@ -1,6 +1,6 @@
 import ReviewList from "./ReviewList";
 import { Product } from "../../../../services/store/store";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 type ProductReviewsContainerProps = {
   product: Product;
 };
@@ -8,8 +8,10 @@ type ProductReviewsContainerProps = {
 function ProductReviewsContainer({ product }: ProductReviewsContainerProps) {
   return (
     <>
-      <Typography variant="h4">Reviews</Typography>
-      <ReviewList product={product} />
+      <Box>
+        <Typography variant="h4">Reviews</Typography>
+        <ReviewList product={product} />
+      </Box>
     </>
   );
 }
