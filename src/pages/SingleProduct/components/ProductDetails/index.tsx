@@ -2,16 +2,15 @@ import { Product } from "../../../../services/store/store";
 import { useStore } from "../../../../services/store/store";
 import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
-import { Rating } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import { Box } from "@mui/material";
+import DescAccordion from "../../../../components/Accordion/DescAccordion";
 type ProductCardProps = {
   product: Product;
 };
 
 function ProductDetails({ product }: ProductCardProps) {
-  const { title, rating, image, description, roundedPrice, discountPercent } =
-    product;
+  const { title, image, description, roundedPrice, discountPercent } = product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
   const handleAddToCart = () => {
@@ -22,15 +21,11 @@ function ProductDetails({ product }: ProductCardProps) {
       <Box>
         <CardMedia sx={{ height: 140 }} image={image.url} title={title} />
         <Box>
-          <Typography>{title}</Typography>
+          <Typography variant="h4">{title}</Typography>
           <Typography>{roundedPrice}</Typography>
           <Typography>{discountPercent}%</Typography>
-          <Typography>{description}</Typography>
         </Box>
-        <Box>
-          <Typography>{rating}</Typography>
-          <Rating name="read-only" value={rating} precision={0.5} readOnly />
-        </Box>
+        <DescAccordion description={description} />
         <Button size="small" variant="outlined" onClick={handleAddToCart}>
           Add to cart
         </Button>
