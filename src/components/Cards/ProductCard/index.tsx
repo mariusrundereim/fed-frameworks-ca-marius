@@ -9,12 +9,13 @@ import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Stack } from "@mui/material";
 type ProductCardProps = {
   product: Product;
 };
 
 function ProductCard({ product }: ProductCardProps) {
-  const { title, price, discountedPrice, image, rating } = product;
+  const { title, image, rating, discountPercent, roundedPrice } = product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
   const navigate = useNavigate();
@@ -64,12 +65,17 @@ function ProductCard({ product }: ProductCardProps) {
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {price}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {discountedPrice}
-          </Typography>
+          <Stack direction="row" spacing={2}>
+            <Typography variant="body1" color="text.secondary">
+              {roundedPrice} NOK
+            </Typography>
+
+            {discountPercent ? (
+              <Typography>{discountPercent} %</Typography>
+            ) : (
+              ""
+            )}
+          </Stack>
         </CardContent>
         <CardActions>
           <Button

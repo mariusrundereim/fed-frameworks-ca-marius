@@ -1,13 +1,16 @@
 import { create } from "zustand";
 import { BASE_URL } from "../../api";
 import { devtools, persist } from "zustand/middleware";
-
+import { roundPrice, calculateDiscount } from "../../utils/formatPrice";
 export type Product = {
   id: string;
   title: string;
   description: string;
   price: number;
   discountedPrice: number;
+  roundedPrice: number;
+  roundedDiscPrice: number;
+  discountPercent: number;
   image: {
     url: string;
     alt?: string;
@@ -57,8 +60,17 @@ export const useStore = create<StoreState>()(
           try {
             const response = await fetch(BASE_URL);
             const { data }: ApiResponse = await response.json();
-            console.log("Console log data:", data);
-            set({ products: data });
+            const processedData = data.map((product) => ({
+              ...product,
+              roundedPrice: roundPrice(product.price),
+              roundedDiscPrice: roundPrice(product.discountedPrice),
+              discountPercent: calculateDiscount(
+                product.price,
+                product.discountedPrice
+              ),
+            }));
+            console.log("Processed data:", processedData);
+            set({ products: processedData });
           } catch (error) {
             console.error("Failed to fetch products:", error);
           }

@@ -10,7 +10,8 @@ type ProductCardProps = {
 };
 
 function ProductDetails({ product }: ProductCardProps) {
-  const { title, price, discountedPrice, rating, image, description } = product;
+  const { title, rating, image, description, roundedPrice, discountPercent } =
+    product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
   const handleAddToCart = () => {
@@ -22,8 +23,8 @@ function ProductDetails({ product }: ProductCardProps) {
         <CardMedia sx={{ height: 140 }} image={image.url} title={title} />
         <Box>
           <Typography>{title}</Typography>
-          <Typography>{price}</Typography>
-          <Typography>{discountedPrice}</Typography>
+          <Typography>{roundedPrice}</Typography>
+          <Typography>{discountPercent}%</Typography>
           <Typography>{description}</Typography>
         </Box>
         <Box>

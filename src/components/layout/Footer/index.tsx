@@ -8,7 +8,7 @@ function Footer() {
         width="100%"
         display="flex"
         alignItems="center"
-        sx={{ border: "2px solid grey" }}
+        sx={{ background: "#c8c9db" }}
       >
         Foo
       </Box>
