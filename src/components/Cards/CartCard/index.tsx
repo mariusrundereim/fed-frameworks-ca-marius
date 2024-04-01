@@ -1,3 +1,4 @@
+import { Product } from "../../../services/store/store";
 import { useStore } from "../../../services/store/store";
 import { CartItem } from "../../../services/store/store";
 
@@ -7,24 +8,28 @@ import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 interface CartCardProps {
   item: CartItem;
+  product: Product;
 }
 
-function CartCard({ item }: CartCardProps) {
-  const { price, quantity } = item;
-  const product = useStore.getState().getProduct(item.id);
-
-  //Delete item
+function useCartItemActions(itemId: string) {
   const deleteItem = useStore((state) => state.removeProductFromCart);
-  const handleDeleteItem = () => deleteItem(item.id);
-
-  //Qty item
   const increaseQty = useStore((state) => state.increaseQuantity);
   const decreaseQty = useStore((state) => state.decreaseQuantity);
-  const handleIncreaseQty = () => increaseQty(item.id);
-  const handleDecreaseQty = () => decreaseQty(item.id);
+
+  const handleDeleteItem = () => deleteItem(itemId);
+  const handleIncreaseQty = () => increaseQty(itemId);
+  const handleDecreaseQty = () => decreaseQty(itemId);
+
+  return { handleDeleteItem, handleIncreaseQty, handleDecreaseQty };
+}
+
+function CartCard({ item, product }: CartCardProps) {
+  const { quantity } = item;
+  const { roundedDiscPrice } = product;
+  const { handleDeleteItem, handleIncreaseQty, handleDecreaseQty } =
+    useCartItemActions(item.id);
 
   return (
     <>
@@ -59,7 +64,9 @@ function CartCard({ item }: CartCardProps) {
                 <Button variant="outlined">{quantity}</Button>
                 <Button onClick={handleIncreaseQty}>+</Button>
               </ButtonGroup>
-              <Typography variant="h4">{price * quantity}</Typography>
+              <Typography variant="h5">
+                Price: {roundedDiscPrice} NOK
+              </Typography>
               <DeleteIcon onClick={handleDeleteItem} />
             </Box>
           </Box>
