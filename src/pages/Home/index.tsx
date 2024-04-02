@@ -33,13 +33,19 @@ function Home() {
         <Typography variant="h4">{searchResults.length} items</Typography>
       </Stack>
 
-      <Grid container spacing={4}>
-        {products.map((product) => (
-          <Grid item sm={4} key={product.id}>
-            <ProductCard product={product} />
-          </Grid>
-        ))}
-      </Grid>
+      {searchResults.length > 0 ? (
+        <Grid container spacing={4}>
+          {searchResults.map((product) => (
+            <Grid item sm={4} key={product.id}>
+              <ProductCard product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Typography variant="h6" style={{ marginTop: 20 }}>
+          No products found
+        </Typography>
+      )}
     </>
   );
 }

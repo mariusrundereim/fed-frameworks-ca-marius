@@ -42,6 +42,7 @@ type StoreState = {
   getProduct: (productId: string) => Product | undefined;
   increaseQuantity: (productId: string) => void;
   decreaseQuantity: (productId: string) => void;
+  getQuantity: (productId: string) => number;
 };
 
 type ApiResponse = {
@@ -149,6 +150,11 @@ export const useStore = create<StoreState>()(
             );
             return { cart: updatedCart };
           });
+        },
+
+        getQuantity: (productId: string) => {
+          const cartItem = get().cart.find((item) => item.id === productId);
+          return cartItem ? cartItem.quantity : 0;
         },
 
         clearCart: () => {

@@ -15,7 +15,7 @@ type ProductCardProps = {
 };
 
 function ProductCard({ product }: ProductCardProps) {
-  const { title, image, rating, discountPercent, roundedPrice } = product;
+  const { title, image, rating, discountPercent, roundedDiscPrice } = product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ function ProductCard({ product }: ProductCardProps) {
           </Typography>
           <Stack direction="row" spacing={2}>
             <Typography variant="body1" color="text.secondary">
-              {roundedPrice} NOK
+              {roundedDiscPrice} NOK
             </Typography>
 
             {discountPercent ? (
@@ -82,6 +82,7 @@ function ProductCard({ product }: ProductCardProps) {
             size="small"
             variant="contained"
             fullWidth
+            disableRipple
             onClick={handleAddToCart}
           >
             Add to Cart

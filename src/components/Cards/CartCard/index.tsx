@@ -17,10 +17,16 @@ function useCartItemActions(itemId: string) {
   const deleteItem = useStore((state) => state.removeProductFromCart);
   const increaseQty = useStore((state) => state.increaseQuantity);
   const decreaseQty = useStore((state) => state.decreaseQuantity);
+  const getQuantity = useStore((state) => state.getQuantity);
 
   const handleDeleteItem = () => deleteItem(itemId);
   const handleIncreaseQty = () => increaseQty(itemId);
-  const handleDecreaseQty = () => decreaseQty(itemId);
+  const handleDecreaseQty = () => {
+    const currentQuantity = getQuantity(itemId);
+    if (currentQuantity > 1) {
+      decreaseQty(itemId);
+    }
+  };
 
   return { handleDeleteItem, handleIncreaseQty, handleDecreaseQty };
 }

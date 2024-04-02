@@ -20,7 +20,10 @@ export const themeOne = createTheme({
       contrastText: "#0d0a0b",
     },
   },
+  typography: {
+    fontFamily: `'Public Sans Variable', sans-serif`,
+  },
   shape: {
-    borderRadius: 3,
+    borderRadius: 5,
   },
 });
