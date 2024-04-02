@@ -4,7 +4,6 @@ import { CartItem } from "../../../services/store/store";
 import { Link } from "react-router-dom";
 
 import { Box } from "@mui/material";
-import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -41,49 +40,35 @@ function CartCard({ item, product }: CartCardProps) {
   return (
     <>
       <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          "& > :not(style)": {
-            m: 1,
-            p: 1,
-            width: "100%",
-            direction: "row",
-          },
-        }}
+        component="article"
+        display="flex"
+        flexDirection={{ xs: "column", md: "row" }}
+        justifyContent="space-between"
+        alignItems="center"
+        padding={1}
       >
-        <Paper>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
+        <Typography variant="h5">
+          <Link
+            to={`/${product.id}`}
+            style={{ textDecoration: "none", color: "inherit" }}
           >
-            <Typography variant="h5">
-              <Link
-                to={`/${product.id}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                {product?.title || "Title missing"}
-              </Link>
-            </Typography>
+            {product?.title || "Title missing"}
+          </Link>
+        </Typography>
 
-            <Box display="flex" alignItems="center" gap="1.5rem">
-              <ButtonGroup
-                variant="contained"
-                size="small"
-                aria-label="Basic button group"
-              >
-                <Button onClick={handleDecreaseQty}>-</Button>
-                <Button variant="outlined">{quantity}</Button>
-                <Button onClick={handleIncreaseQty}>+</Button>
-              </ButtonGroup>
-              <Typography variant="h5">
-                Price: {roundedDiscPrice} NOK
-              </Typography>
-              <DeleteIcon onClick={handleDeleteItem} />
-            </Box>
-          </Box>
-        </Paper>
+        <Box display="flex" alignItems="center" gap="1.5rem">
+          <ButtonGroup
+            variant="contained"
+            size="small"
+            aria-label="Basic button group"
+          >
+            <Button onClick={handleDecreaseQty}>-</Button>
+            <Button variant="outlined">{quantity}</Button>
+            <Button onClick={handleIncreaseQty}>+</Button>
+          </ButtonGroup>
+          <Typography variant="h5">{roundedDiscPrice} NOK</Typography>
+          <DeleteIcon onClick={handleDeleteItem} />
+        </Box>
       </Box>
     </>
   );

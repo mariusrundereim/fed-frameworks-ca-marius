@@ -1,5 +1,8 @@
 import { Box } from "@mui/material";
+import { useTheme } from "@mui/material";
+import { Grid } from "@mui/material";
 function Footer() {
+  const theme = useTheme();
   return (
     <>
       <Box
@@ -8,9 +11,23 @@ function Footer() {
         width="100%"
         display="flex"
         alignItems="center"
-        sx={{ background: "#c8c9db" }}
+        sx={{
+          flexGrow: 1,
+          color: theme.palette.common.white,
+          backgroundColor: theme.palette.primary.dark,
+        }}
       >
-        Foo
+        <Grid container spacing={3}>
+          <Grid item md>
+            Logo
+          </Grid>
+          <Grid item md={6}>
+            Contact - Cart
+          </Grid>
+          <Grid item md>
+            Build with React & MUI
+          </Grid>
+        </Grid>
       </Box>
     </>
   );
