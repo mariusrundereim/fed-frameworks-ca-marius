@@ -1,6 +1,7 @@
 import { Product } from "../../../services/store/store";
 import { useStore } from "../../../services/store/store";
 import { CartItem } from "../../../services/store/store";
+import { Link } from "react-router-dom";
 
 import { Box } from "@mui/material";
 import { Paper } from "@mui/material";
@@ -58,8 +59,14 @@ function CartCard({ item, product }: CartCardProps) {
             alignItems="center"
           >
             <Typography variant="h5">
-              {product?.title || "Title missing"}
+              <Link
+                to={`/${product.id}`}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                {product?.title || "Title missing"}
+              </Link>
             </Typography>
+
             <Box display="flex" alignItems="center" gap="1.5rem">
               <ButtonGroup
                 variant="contained"

@@ -14,7 +14,7 @@ function Cart() {
   const total = useStore((state) => state.totalPrice)();
   return (
     <>
-      <Typography variant="h4">Cart</Typography>
+      <Typography variant="h4">Shopping Cart</Typography>
       <Box>
         <Button variant="contained" onClick={clearCart}>
           Clear cart
@@ -37,17 +37,25 @@ function Cart() {
           direction={{ xs: "column", sm: "row" }}
           justifyContent="space-between"
         >
-          <Typography variant="h5">Discount saved</Typography>
-          <Typography variant="h5"> NOK</Typography>
+          <Typography variant="h6">Discount saved</Typography>
+          <Typography variant="h6" sx={{ textDecoration: "line-through" }}>
+            {discountSaved} NOK
+          </Typography>
         </Stack>
         <Stack
           direction={{ xs: "column", sm: "row" }}
           justifyContent="space-between"
         >
-          <Typography variant="h5">Total</Typography>
-          <Typography variant="h5">{total} NOK</Typography>
-          <Typography variant="h5">{totalBeforeDiscount} NOK</Typography>
-          <Typography variant="h5">{discountSaved} Saved</Typography>
+          <Typography variant="h6">Total before discount:</Typography>
+          <Typography variant="h6">{totalBeforeDiscount} NOK</Typography>
+        </Stack>
+
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          justifyContent="space-between"
+        >
+          <Typography variant="h6">Total</Typography>
+          <Typography variant="h6">{total} NOK</Typography>
         </Stack>
       </Box>
     </>
