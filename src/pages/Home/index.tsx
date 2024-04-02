@@ -5,6 +5,7 @@ import SearchBar from "../../components/SearchBar";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/material";
+import SearchBarNew from "../../components/Search";
 
 function Home() {
   const { products, fetchProducts } = useStore();
@@ -26,6 +27,7 @@ function Home() {
 
   return (
     <>
+      <SearchBarNew placeholder="Search.." data={products} />
       <SearchBar value={searchQuery} onChange={handleSearchChange} />
 
       <Stack direction="row" justifyContent="space-between">
