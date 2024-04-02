@@ -8,8 +8,10 @@ function Cart() {
   const clearCart = useStore((state) => state.clearCart);
   const { cart } = useStore();
   const { products } = useStore();
-  const calcTotalPrice = useStore((state) => state.totalPrice);
-  const total = calcTotalPrice();
+
+  const totalBeforeDiscount = useStore((state) => state.totalBeforeDiscount)();
+  const discountSaved = useStore((state) => state.totalDiscountSaved)();
+  const total = useStore((state) => state.totalPrice)();
   return (
     <>
       <Typography variant="h4">Cart</Typography>
@@ -36,7 +38,7 @@ function Cart() {
           justifyContent="space-between"
         >
           <Typography variant="h5">Discount saved</Typography>
-          <Typography variant="h5">{total} NOK</Typography>
+          <Typography variant="h5"> NOK</Typography>
         </Stack>
         <Stack
           direction={{ xs: "column", sm: "row" }}
@@ -44,6 +46,8 @@ function Cart() {
         >
           <Typography variant="h5">Total</Typography>
           <Typography variant="h5">{total} NOK</Typography>
+          <Typography variant="h5">{totalBeforeDiscount} NOK</Typography>
+          <Typography variant="h5">{discountSaved} Saved</Typography>
         </Stack>
       </Box>
     </>

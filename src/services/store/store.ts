@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { BASE_URL } from "../../api";
 import { devtools, persist } from "zustand/middleware";
 import { roundPrice, calculateDiscount } from "../../utils/formatPrice";
+
 export type Product = {
   id: string;
   title: string;
@@ -27,7 +28,7 @@ export type Product = {
 
 export type CartItem = {
   id: string;
-  price: number;
+  discountedPrice: number;
   quantity: number;
 };
 
@@ -39,6 +40,8 @@ type StoreState = {
   removeProductFromCart: (productId: string) => void;
   clearCart: () => void;
   totalPrice: () => number;
+  totalBeforeDiscount: () => number;
+  totalDiscountSaved: () => number;
   getProduct: (productId: string) => Product | undefined;
   increaseQuantity: (productId: string) => void;
   decreaseQuantity: (productId: string) => void;
@@ -102,19 +105,45 @@ export const useStore = create<StoreState>()(
             } else {
               const newCartItem: CartItem = {
                 id: productToAdd.id,
-                price: productToAdd.price,
+                discountedPrice: productToAdd.roundedDiscPrice,
                 quantity: quantity,
               };
               return { cart: [...state.cart, newCartItem] };
             }
           });
         },
+
+        totalBeforeDiscount: (): number => {
+          return useStore
+            .getState()
+            .cart.reduce((total: number, item: CartItem) => {
+              // Find the corresponding product to get the full price
+              const product = get().products.find(
+                (product) => product.id === item.id
+              );
+              return product ? total + product.price * item.quantity : total;
+            }, 0);
+        },
+
+        totalDiscountSaved: (): number => {
+          return useStore
+            .getState()
+            .cart.reduce((total: number, item: CartItem) => {
+              const product = get().products.find(
+                (product) => product.id === item.id
+              );
+              return product
+                ? total + (product.price - item.discountedPrice) * item.quantity
+                : total;
+            }, 0);
+        },
+
         totalPrice: (): number => {
           return useStore
             .getState()
             .cart.reduce(
               (total: number, item: CartItem) =>
-                total + item.price * item.quantity,
+                total + item.discountedPrice * item.quantity,
               0
             );
         },

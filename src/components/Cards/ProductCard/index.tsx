@@ -30,7 +30,7 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <>
-      <Card>
+      <Card elevation={5} sx={{ width: 1 }}>
         <Box sx={{ width: 1, pt: "100%", position: "relative" }}>
           <CardMedia
             component="img"

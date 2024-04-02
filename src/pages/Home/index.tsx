@@ -34,9 +34,19 @@ function Home() {
       </Stack>
 
       {searchResults.length > 0 ? (
-        <Grid container spacing={4}>
+        <Grid container component="section" spacing={{ xs: 1, sm: 3, md: 4 }}>
           {searchResults.map((product) => (
-            <Grid item sm={4} key={product.id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              lg={3}
+              key={product.id}
+              sx={{
+                minWidth: "100px",
+                maxWidth: "1",
+              }}
+            >
               <ProductCard product={product} />
             </Grid>
           ))}
