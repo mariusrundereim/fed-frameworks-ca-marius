@@ -6,6 +6,7 @@ import { Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Paper } from "@mui/material";
 import { useTheme } from "@mui/material";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 function Cart() {
   const theme = useTheme();
   const clearCart = useStore((state) => state.clearCart);
@@ -62,6 +63,11 @@ function Cart() {
           </Stack>
         </Paper>
         <Box>
+          <Link to="/">
+            <Button variant="outlined" startIcon={<ArrowBackIosIcon />}>
+              Continue Shopping
+            </Button>
+          </Link>
           <Button variant="contained" onClick={clearCart}>
             Clear cart
           </Button>
