@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 function Layout() {
-  const appBarHeight = "100px";
+  const appBarHeight = "80px";
   return (
     <>
       <Grid
