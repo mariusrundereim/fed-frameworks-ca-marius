@@ -11,7 +11,7 @@ import { Toolbar } from "@mui/material";
 import { Box } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { MenuSharp } from "@mui/icons-material";
-import StyledExample from "../../Styled/typography/customTypography";
+import StyledTypography from "../../Styled/typography/customTypography";
 const pages = ["Cart", "Contact"];
 
 function Header() {
@@ -93,15 +93,9 @@ function Header() {
                   key={page}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <Typography
-                    key={page}
-                    onClick={handleCloseNavMenu}
-                    border={"1px solid black"}
-                    sx={{ display: "block" }}
-                  >
+                  <StyledTypography onClick={() => setAnchorElNav(null)}>
                     {page}
-                  </Typography>
-                  <StyledExample />
+                  </StyledTypography>
                 </Link>
               ))}
             </Box>

@@ -1,16 +1,18 @@
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const CustomTypography = styled(Typography)(({ theme }) => ({
+const StyledTypography = styled(Typography)(({ theme }) => ({
   cursor: "pointer",
+  padding: "6px 10px",
+  transition: "300ms all",
   ":hover": {
-    color: theme.palette.secondary.main,
-    textDecoration: "underline",
+    color: theme.palette.primary.main,
+    textDecoration: "none",
+  },
+
+  ":focus-visible": {
+    outline: `2px solid ${theme.palette.secondary.main}`,
   },
 }));
 
-function StyledExample() {
-  return <CustomTypography>Hover me</CustomTypography>;
-}
-
-export default StyledExample;
+export default StyledTypography;
