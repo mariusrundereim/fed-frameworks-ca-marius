@@ -10,7 +10,6 @@ function Layout() {
         sx={{
           minHeight: "100vh",
           display: "flex",
-
           flexDirection: "column",
           width: "100%",
         }}
