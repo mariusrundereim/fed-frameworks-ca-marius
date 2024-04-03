@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 function BrandLogo() {
+  const logoUrl = "../../../public/brand_logo_white.svg";
   return (
-    <Link to="/" style={{ textDecoration: "none" }}>
-      <Typography variant="h6" color="inherit" noWrap>
-        {/* Place your logo here. An example with text: */}
-        Your Logo
-      </Typography>
+    <Link to="/">
+      <Box component="img" sx={{ height: 40 }} alt="Logo" src={logoUrl} />
     </Link>
   );
 }
