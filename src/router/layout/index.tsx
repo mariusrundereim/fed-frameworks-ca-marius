@@ -2,29 +2,17 @@ import { Outlet } from "react-router-dom";
 import { Grid } from "@mui/material";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
-import { Box } from "@mui/material";
-
 function Layout() {
+  const appBarHeight = "100px";
   return (
     <>
       <Grid
-        sx={{
-          minHeight: "100vh",
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-        }}
+        sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
         <Header />
-        <Box
-          component="main"
-          padding="1rem"
-          margin="0 auto"
-          marginTop={10}
-          sx={{ flexGrow: 1 }}
-        >
+        <Grid sx={{ flexGrow: 1, pt: appBarHeight }}>
           <Outlet />
-        </Box>
+        </Grid>
         <Footer />
       </Grid>
     </>
