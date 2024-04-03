@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useStore } from "../../../services/store/store";
-import { AppBar, Button, Typography } from "@mui/material";
+import { AppBar, Typography } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import BrandLogo from "../../Logo";
 import { Container } from "@mui/material";
 import { Menu } from "@mui/material";
 import { MenuItem } from "@mui/material";
@@ -12,7 +11,7 @@ import { Toolbar } from "@mui/material";
 import { Box } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { MenuSharp } from "@mui/icons-material";
-const pages = ["Home", "Cart", "Contact"];
+const pages = ["Cart", "Contact"];
 
 function Header() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -34,7 +33,9 @@ function Header() {
       <AppBar position="fixed" color="default" elevation={0}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <BrandLogo />
+            <Typography>Kaupa</Typography>
+
+            {/* Mobile Nav */}
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
@@ -59,25 +60,41 @@ function Header() {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign={"center"}>{page}</Typography>
+                    <Link
+                      to={`/${page.toLowerCase()}`} // Adjust the `to` prop as needed
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        width: "100%",
+                      }}
+                    >
+                      <Typography textAlign="center">{page}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
+            {/* Desktop Nav */}
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Button
+                <Link
+                  to={`/${page.toLowerCase()}`}
                   key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, display: "block" }}
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  {page}
-                </Button>
+                  <Typography
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, display: "block" }}
+                  >
+                    {page}
+                  </Typography>
+                </Link>
               ))}
             </Box>
             <Link to="/cart">
               <Badge
-                color="secondary"
+                color="primary"
                 badgeContent={cartItemCount}
                 max={999}
                 showZero

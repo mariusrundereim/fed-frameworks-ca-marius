@@ -5,7 +5,6 @@ import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/material";
 import SearchBarNew from "../../components/Search";
-import { Box } from "@mui/material";
 function Home() {
   const { products, fetchProducts } = useStore();
 
@@ -15,9 +14,7 @@ function Home() {
 
   return (
     <>
-      <Box bgcolor={"lightgray"} p={2}>
-        <SearchBarNew placeholder="Search.." data={products} />
-      </Box>
+      <SearchBarNew placeholder="Search.." data={products} />
 
       <Stack direction="row" justifyContent="space-between">
         <Typography variant="h4">Products</Typography>
