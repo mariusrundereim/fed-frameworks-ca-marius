@@ -11,6 +11,7 @@ import { Toolbar } from "@mui/material";
 import { Box } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { MenuSharp } from "@mui/icons-material";
+import StyledExample from "../../Styled/typography/customTypography";
 const pages = ["Cart", "Contact"];
 
 function Header() {
@@ -33,7 +34,17 @@ function Header() {
       <AppBar position="fixed" color="default" elevation={0}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography>Kaupa</Typography>
+            <Link
+              to="/"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              <Typography variant="h4" fontWeight={"600"}>
+                Kaupa
+              </Typography>
+            </Link>
 
             {/* Mobile Nav */}
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -68,7 +79,7 @@ function Header() {
                         width: "100%",
                       }}
                     >
-                      <Typography textAlign="center">{page}</Typography>
+                      <Typography>{page}</Typography>
                     </Link>
                   </MenuItem>
                 ))}
@@ -85,10 +96,12 @@ function Header() {
                   <Typography
                     key={page}
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, display: "block" }}
+                    border={"1px solid black"}
+                    sx={{ display: "block" }}
                   >
                     {page}
                   </Typography>
+                  <StyledExample />
                 </Link>
               ))}
             </Box>
