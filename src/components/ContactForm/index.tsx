@@ -17,7 +17,14 @@ function ContactForm() {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      firstName: "",
+      subject: "",
+      email: "",
+      body: "",
+    },
+  });
 
   const onSubmit = (data: FormData) => {
     console.log(data);
