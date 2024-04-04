@@ -2,37 +2,37 @@ import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { useTheme } from "@mui/material";
+import CheckOutList from "../../components/List";
 function CheckoutPage() {
+  const theme = useTheme();
   return (
     <>
       <Container maxWidth="xl">
-        <Box>
-          <CheckCircleIcon fontSize="large" />
-          <Typography variant="h4" fontWeight={"700"}>
-            Payment Successful
-          </Typography>
-          <Typography>
-            Your payment has been processed! Details of transaction are included
-            below.
-          </Typography>
-          <Typography>Transaction Number: 457XgrT</Typography>
-          <Box>
-            <Box>
-              <Typography textTransform={"uppercase"}>
-                Total Amount Paid
+        <Box component={"section"}>
+          <Box display={"flex"} flexDirection={{ sm: "column", md: "row" }}>
+            <Box
+              sx={{
+                backgroundColor: theme.palette.success.main,
+                p: 4,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: 4,
+                borderRadius: theme.shape.borderRadius,
+              }}
+            >
+              <CheckCircleIcon fontSize="large" />
+              <Typography variant="h4" fontWeight={"700"}>
+                Payment Successful
               </Typography>
-              <Typography>3409 NOK</Typography>
-            </Box>
-            <Box>
-              <Typography textTransform={"uppercase"}>Payed by</Typography>
-              <Typography>Vipps</Typography>
-            </Box>
-            <Box>
-              <Typography textTransform={"uppercase"}>
-                Transaction date
+              <Typography>Your payment has been processed!</Typography>
+              <Typography>
+                Details of transaction are included below.
               </Typography>
-              <Typography>04 April 2024, 08:00 AM</Typography>
             </Box>
+            <CheckOutList />
           </Box>
         </Box>
       </Container>
