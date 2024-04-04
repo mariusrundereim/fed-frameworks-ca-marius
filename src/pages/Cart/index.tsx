@@ -9,6 +9,8 @@ import { useTheme } from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { Container } from "@mui/material";
 import { Grid } from "@mui/material";
+import { formatCurrencyDirect } from "../../utils/formatCurrency";
+
 function Cart() {
   const theme = useTheme();
   const clearCart = useStore((state) => state.clearCart);
@@ -65,7 +67,7 @@ function Cart() {
                   variant="h6"
                   sx={{ textDecoration: "line-through" }}
                 >
-                  {discountSaved} NOK
+                  {formatCurrencyDirect(discountSaved)}
                 </Typography>
               </Stack>
               <Stack
@@ -73,7 +75,9 @@ function Cart() {
                 justifyContent="space-between"
               >
                 <Typography variant="h6">Total before discount:</Typography>
-                <Typography variant="h6">{totalBeforeDiscount} NOK</Typography>
+                <Typography variant="h6">
+                  {formatCurrencyDirect(totalBeforeDiscount)}
+                </Typography>
               </Stack>
 
               <Stack
@@ -81,7 +85,9 @@ function Cart() {
                 justifyContent="space-between"
               >
                 <Typography variant="h6">Total</Typography>
-                <Typography variant="h6">{total} NOK</Typography>
+                <Typography variant="h6">
+                  {formatCurrencyDirect(total)}
+                </Typography>
               </Stack>
             </Paper>
           </Grid>

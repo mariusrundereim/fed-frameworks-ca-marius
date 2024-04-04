@@ -6,6 +6,7 @@ import { CardMedia } from "@mui/material";
 import { Box } from "@mui/material";
 import DescAccordion from "../../../../components/Accordion/DescAccordion";
 import { Grid } from "@mui/material";
+import { formatCurrencyDirect } from "../../../../utils/formatCurrency";
 type ProductCardProps = {
   product: Product;
 };
@@ -20,8 +21,8 @@ function ProductDetails({ product }: ProductCardProps) {
   return (
     <>
       <Grid container gap={4}>
-        <Grid item border="3px solid orange">
-          <Box border="3px dotted blue" sx={{ width: "100%" }}>
+        <Grid item>
+          <Box sx={{ width: "100%" }}>
             <CardMedia
               component="img"
               sx={{ maxHeight: "20rem" }}
@@ -33,7 +34,7 @@ function ProductDetails({ product }: ProductCardProps) {
         <Grid item gap={4}>
           <Typography variant="h4">{title}</Typography>
           <Box>
-            <Typography>{roundedPrice}</Typography>
+            <Typography>{formatCurrencyDirect(roundedPrice)}</Typography>
             <Typography>{discountPercent}%</Typography>
           </Box>
           <Button size="small" variant="outlined" onClick={handleAddToCart}>
