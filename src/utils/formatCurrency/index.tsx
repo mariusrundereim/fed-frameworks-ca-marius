@@ -17,7 +17,3 @@ export const formatCurrency = (amount: number): string => {
   const formatted = amount.toLocaleString("nb-NO");
   return formatted.replace(/,/g, "") + "Kr";
 };
-
-export const amount = 12345678;
-console.log(formatCurrencyDirect(amount));
-console.log(formatCurrency(amount));

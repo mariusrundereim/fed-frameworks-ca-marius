@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/material";
 import SearchBarNew from "../../components/Search";
+import { Container } from "@mui/material";
 function Home() {
   const { products, fetchProducts } = useStore();
 
@@ -14,30 +15,32 @@ function Home() {
 
   return (
     <>
-      <SearchBarNew placeholder="Search.." data={products} />
+      <Container maxWidth="xl">
+        <SearchBarNew placeholder="Search.." data={products} />
 
-      <Stack direction="row" justifyContent="space-between">
-        <Typography variant="h4">Products</Typography>
-        <Typography variant="h4">{products.length} items</Typography>
-      </Stack>
+        <Stack direction="row" justifyContent="space-between">
+          <Typography variant="h4">Products</Typography>
+          <Typography variant="h4">{products.length} items</Typography>
+        </Stack>
 
-      <Grid container spacing={3}>
-        {products.map((product) => (
-          <Grid
-            item
-            xs={12}
-            sm={6}
-            lg={3}
-            key={product.id}
-            sx={{
-              minWidth: "100px",
-              maxWidth: "1",
-            }}
-          >
-            <ProductCard product={product} />
-          </Grid>
-        ))}
-      </Grid>
+        <Grid container spacing={3}>
+          {products.map((product) => (
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              lg={3}
+              key={product.id}
+              sx={{
+                minWidth: "100px",
+                maxWidth: "1",
+              }}
+            >
+              <ProductCard product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </>
   );
 }

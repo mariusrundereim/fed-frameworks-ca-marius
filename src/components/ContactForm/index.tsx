@@ -4,7 +4,7 @@ import { Controller } from "react-hook-form";
 import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
-
+import { Box } from "@mui/material";
 interface FormData {
   firstName: string;
   subject: string;
@@ -31,7 +31,7 @@ function ContactForm() {
   };
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Grid container direction="column" gap={4}>
           <Controller
             control={control}
@@ -120,7 +120,7 @@ function ContactForm() {
             Submit
           </Button>
         </Grid>
-      </form>
+      </Box>
     </>
   );
 }
