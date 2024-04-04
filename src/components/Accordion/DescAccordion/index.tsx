@@ -18,7 +18,7 @@ function DescAccordion({ description }: DescAccordionProps) {
             aria-controls="panel1-content"
             id="panel1-header"
           >
-            <Typography>Description</Typography>
+            <Typography fontWeight={"600"}>Description</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>{description}</Typography>

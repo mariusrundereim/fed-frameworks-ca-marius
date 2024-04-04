@@ -2,15 +2,12 @@ import { Product } from "../../services/store/store";
 import ProductDetails from "./components/ProductDetails";
 import ProductReviewsContainer from "./components/Reviews";
 import { Container } from "@mui/material";
+
 type SingleProductProps = {
-  product: Product | undefined;
+  product: Product;
 };
 
-const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
-  if (!product) {
-    return <div>Product not found</div>;
-  }
-
+function SingleProduct({ product }: SingleProductProps) {
   return (
     <>
       <Container maxWidth="xl">
@@ -19,6 +16,6 @@ const SingleProduct: React.FC<SingleProductProps> = ({ product }) => {
       </Container>
     </>
   );
-};
+}
 
 export default SingleProduct;
