@@ -8,15 +8,15 @@ export const themeOne = createTheme({
       white: "#fff",
     },
     primary: {
-      main: "#FF8585",
-      light: "#FFC6C6",
-      dark: "#C27070",
+      main: "#489D90",
+      light: "#D0EFEF",
+      dark: "#254944",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#545667",
-      light: "#7F818D",
-      dark: "#40424F",
+      main: "#FFEDAD",
+      light: "#FFF7DA",
+      dark: "#CCC19B",
       contrastText: "#0d0a0b",
     },
     success: {

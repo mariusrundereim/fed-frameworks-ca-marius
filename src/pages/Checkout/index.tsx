@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useStore } from "../../services/store/store";
 import { Container } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Box } from "@mui/material";
@@ -6,6 +8,14 @@ import { useTheme } from "@mui/material";
 import CheckOutList from "../../components/List";
 function CheckoutPage() {
   const theme = useTheme();
+  const clearCart = useStore((state) => state.clearCart);
+
+  // This effect runs when the component is unmounted
+  useEffect(() => {
+    // When the component unmounts, clear the cart
+    return () => clearCart();
+  }, [clearCart]); // clearCart is a dependency of this effect
+
   return (
     <>
       <Container maxWidth="xl">
