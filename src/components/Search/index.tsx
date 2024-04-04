@@ -52,6 +52,8 @@ function SearchBarNew({ placeholder, data }: SearchNewProps) {
                 key={value.id}
                 sx={{
                   cursor: "default",
+                  position: "relative",
+                  zIndex: "2222222",
                   padding: "3px 7px",
                   "&:hover": { background: "lightgrey" },
                 }}

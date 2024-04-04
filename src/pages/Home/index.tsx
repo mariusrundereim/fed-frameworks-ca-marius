@@ -4,8 +4,8 @@ import ProductCard from "../../components/Cards/ProductCard";
 import { Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Stack } from "@mui/material";
-import SearchBarNew from "../../components/Search";
 import { Container } from "@mui/material";
+import Hero from "./components/Hero";
 function Home() {
   const { products, fetchProducts } = useStore();
 
@@ -16,7 +16,7 @@ function Home() {
   return (
     <>
       <Container maxWidth="xl">
-        <SearchBarNew placeholder="Search.." data={products} />
+        <Hero />
 
         <Stack direction="row" justifyContent="space-between">
           <Typography variant="h4">Products</Typography>

@@ -24,6 +24,6 @@ export const themeOne = createTheme({
     fontFamily: `'Public Sans Variable', sans-serif`,
   },
   shape: {
-    borderRadius: 5,
+    borderRadius: 3,
   },
 });
