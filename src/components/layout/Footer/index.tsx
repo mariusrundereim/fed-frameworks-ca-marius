@@ -8,11 +8,10 @@ function Footer() {
     <>
       <Box
         component="footer"
-        minHeight="10rem"
         sx={{
-          flexGrow: 1,
+          minHeight: "6rem",
           color: theme.palette.common.white,
-          backgroundColor: theme.palette.primary.dark,
+          backgroundColor: theme.palette.primary.main,
         }}
       >
         <Container maxWidth="xl">
