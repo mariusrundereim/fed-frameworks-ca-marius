@@ -33,6 +33,7 @@ function SearchBarNew({ placeholder, data }: SearchNewProps) {
           id="outlined-search"
           label={placeholder}
           onChange={handleFilter}
+          fullWidth
         />
       </Box>
       {filteredProducts.length != 0 && (
