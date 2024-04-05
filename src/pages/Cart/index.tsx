@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useStore } from "../../services/store/store";
 import CartCard from "../../components/Cards/CartCard";
@@ -11,10 +12,16 @@ import ClearAllIcon from "@mui/icons-material/ClearAll";
 import { Container } from "@mui/material";
 import { Grid } from "@mui/material";
 import { formatCurrencyDirect } from "../../utils/formatCurrency";
-
 function Cart() {
   const theme = useTheme();
+  const navigate = useNavigate();
   const clearCart = useStore((state) => state.clearCart);
+  const checkout = useStore((state) => state.handleCheckout);
+
+  const onCheckout = () => {
+    checkout();
+    navigate("/checkout");
+  };
   const { cart } = useStore();
   const { products } = useStore();
 
@@ -63,11 +70,8 @@ function Cart() {
                   direction={{ xs: "column", sm: "row" }}
                   justifyContent="space-between"
                 >
-                  <Typography variant="h6">Discount saved</Typography>
-                  <Typography
-                    variant="h6"
-                    sx={{ textDecoration: "line-through" }}
-                  >
+                  <Typography variant="h6">Discount</Typography>
+                  <Typography variant="h6">
                     {formatCurrencyDirect(discountSaved)}
                   </Typography>
                 </Stack>
@@ -75,8 +79,11 @@ function Cart() {
                   direction={{ xs: "column", sm: "row" }}
                   justifyContent="space-between"
                 >
-                  <Typography variant="h6">Total before discount:</Typography>
-                  <Typography variant="h6">
+                  <Typography variant="h6">Price</Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{ textDecoration: "line-through" }}
+                  >
                     {formatCurrencyDirect(totalBeforeDiscount)}
                   </Typography>
                 </Stack>
@@ -110,11 +117,9 @@ function Cart() {
                 >
                   Clear cart
                 </Button>
-                <Link to="/checkout">
-                  <Button variant="contained" fullWidth>
-                    Checkout
-                  </Button>
-                </Link>
+                <Button variant="contained" fullWidth onClick={onCheckout}>
+                  Checkout
+                </Button>
               </Box>
             </Grid>
           </Grid>

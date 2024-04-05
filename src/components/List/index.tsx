@@ -12,13 +12,13 @@ import PaymentIcon from "@mui/icons-material/Payment";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import EventIcon from "@mui/icons-material/Event";
 function CheckOutList() {
-  const totalPrice = useStore((state) => state.totalPrice());
+  const checkoutTotal = useStore((state) => state.checkoutTotal);
 
   const listData = [
     { primary: "Transaction ID", secondary: "457XgrT", Icon: VerifiedUserIcon },
     {
       primary: "Total Amount Paid",
-      secondary: `${totalPrice} NOK`, // Make sure to convert totalPrice to a string if necessary
+      secondary: `${checkoutTotal} NOK`,
       Icon: AccountBalanceWalletIcon,
     },
     { primary: "Payed by", secondary: "Vipps", Icon: PaymentIcon },
