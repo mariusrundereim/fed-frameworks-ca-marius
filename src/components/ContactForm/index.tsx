@@ -116,7 +116,12 @@ function ContactForm() {
               />
             )}
           />
-          <Button variant="outlined" type="submit" sx={{ marginTop: "2rem" }}>
+          <Button
+            variant="outlined"
+            type="submit"
+            disableRipple
+            sx={{ marginTop: "2rem" }}
+          >
             Submit
           </Button>
         </Grid>
