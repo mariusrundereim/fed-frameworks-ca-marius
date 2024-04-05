@@ -10,6 +10,7 @@ import { Typography } from "@mui/material";
 import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/material";
+import { formatCurrencyDirect } from "../../../utils/formatCurrency";
 type ProductCardProps = {
   product: Product;
 };
@@ -67,7 +68,7 @@ function ProductCard({ product }: ProductCardProps) {
           </Typography>
           <Stack direction="row" spacing={2}>
             <Typography variant="body1" color="text.secondary">
-              {roundedDiscPrice} NOK
+              {formatCurrencyDirect(roundedDiscPrice)}
             </Typography>
 
             {discountPercent ? (

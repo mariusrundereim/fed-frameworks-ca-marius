@@ -12,6 +12,7 @@ import { Box } from "@mui/material";
 import { IconButton } from "@mui/material";
 import { MenuSharp } from "@mui/icons-material";
 import StyledTypography from "../../Styled/typography/customTypography";
+
 const pages = ["Cart", "Contact"];
 
 function Header() {

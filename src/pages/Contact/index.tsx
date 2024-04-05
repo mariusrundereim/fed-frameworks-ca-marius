@@ -1,12 +1,15 @@
 import ContactForm from "../../components/ContactForm";
-import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
+import { Box } from "@mui/material";
+import ContactDetails from "./components/ContactDetails";
 function ContactPage() {
   return (
     <>
       <Container maxWidth="xl">
-        <Typography variant="h4">Contact</Typography>
-        <ContactForm />
+        <Box>
+          <ContactDetails />
+          <ContactForm />
+        </Box>
       </Container>
     </>
   );

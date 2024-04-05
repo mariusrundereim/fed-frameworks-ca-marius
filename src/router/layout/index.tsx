@@ -3,14 +3,19 @@ import { Grid } from "@mui/material";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 function Layout() {
-  const appBarHeight = "80px";
   return (
     <>
       <Grid
         sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
         <Header />
-        <Grid sx={{ flexGrow: 1, pt: appBarHeight }}>
+        <Grid
+          sx={{
+            flexGrow: 1,
+            mb: 6,
+            mt: 10,
+          }}
+        >
           <Outlet />
         </Grid>
         <Footer />

@@ -4,7 +4,7 @@ import { Controller } from "react-hook-form";
 import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
-
+import { Box } from "@mui/material";
 interface FormData {
   firstName: string;
   subject: string;
@@ -17,14 +17,21 @@ function ContactForm() {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      firstName: "",
+      subject: "",
+      email: "",
+      body: "",
+    },
+  });
 
   const onSubmit = (data: FormData) => {
     console.log(data);
   };
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Box component="form" onSubmit={handleSubmit(onSubmit)}>
         <Grid container direction="column" gap={4}>
           <Controller
             control={control}
@@ -109,11 +116,16 @@ function ContactForm() {
               />
             )}
           />
-          <Button variant="outlined" type="submit" sx={{ marginTop: "2rem" }}>
+          <Button
+            variant="outlined"
+            type="submit"
+            disableRipple
+            sx={{ marginTop: "2rem" }}
+          >
             Submit
           </Button>
         </Grid>
-      </form>
+      </Box>
     </>
   );
 }

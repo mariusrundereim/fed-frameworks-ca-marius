@@ -8,7 +8,7 @@ type ProductReviewsContainerProps = {
 function ProductReviewsContainer({ product }: ProductReviewsContainerProps) {
   return (
     <>
-      <Box>
+      <Box mt={4}>
         <Typography variant="h4">Reviews</Typography>
         <ReviewList product={product} />
       </Box>

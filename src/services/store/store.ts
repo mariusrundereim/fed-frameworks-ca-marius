@@ -38,6 +38,8 @@ type StoreState = {
   fetchProducts: () => Promise<void>;
   addProductToCart: (productId: string, quantity: number) => void;
   removeProductFromCart: (productId: string) => void;
+  checkoutTotal: number;
+  handleCheckout: () => void;
   clearCart: () => void;
   totalPrice: () => number;
   totalBeforeDiscount: () => number;
@@ -59,6 +61,7 @@ export const useStore = create<StoreState>()(
       (set, get) => ({
         products: [],
         cart: [],
+        checkoutTotal: 0,
 
         fetchProducts: async () => {
           try {
@@ -186,9 +189,17 @@ export const useStore = create<StoreState>()(
           return cartItem ? cartItem.quantity : 0;
         },
 
-        clearCart: () => {
-          set({ cart: [] });
+        handleCheckout: () => {
+          set((state) => {
+            // Capture the total before clearing
+            const total = state.totalPrice();
+
+            // Return the updated state
+            return { cart: [], checkoutTotal: total };
+          });
         },
+
+        clearCart: () => set({ cart: [] }),
       }),
       { name: "MyStore" }
     )

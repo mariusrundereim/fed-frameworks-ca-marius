@@ -3,15 +3,17 @@ import { useStore } from "../../../../services/store/store";
 import { Button } from "@mui/material";
 import { Typography } from "@mui/material";
 import { CardMedia } from "@mui/material";
-import { Box } from "@mui/material";
 import DescAccordion from "../../../../components/Accordion/DescAccordion";
 import { Grid } from "@mui/material";
+import { formatCurrencyDirect } from "../../../../utils/formatCurrency";
+import { Paper } from "@mui/material";
 type ProductCardProps = {
   product: Product;
 };
 
 function ProductDetails({ product }: ProductCardProps) {
-  const { title, image, description, roundedPrice, discountPercent } = product;
+  const { title, image, description, discountPercent, discountedPrice } =
+    product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
   const handleAddToCart = () => {
@@ -19,29 +21,46 @@ function ProductDetails({ product }: ProductCardProps) {
   };
   return (
     <>
-      <Grid container gap={4}>
-        <Grid item border="3px solid orange">
-          <Box border="3px dotted blue" sx={{ width: "100%" }}>
+      <Paper elevation={0} sx={{ margin: "auto" }}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={6}>
             <CardMedia
               component="img"
-              sx={{ maxHeight: "20rem" }}
               image={image.url}
               title={title}
+              sx={{ maxHeight: { md: "50vh" } }}
             />
-          </Box>
+          </Grid>
+          {/* Product Details */}
+          <Grid item xs={12} md={6} container direction="column" gap={6}>
+            <Grid item>
+              <Typography gutterBottom variant="h4" component="div">
+                {title}
+              </Typography>
+              <Typography gutterBottom>
+                {formatCurrencyDirect(discountedPrice)}
+              </Typography>
+              <Typography>{discountPercent}%</Typography>
+            </Grid>
+            <Grid container gap={2} direction="column">
+              <Grid item>
+                <Button
+                  size="large"
+                  variant="outlined"
+                  onClick={handleAddToCart}
+                  fullWidth
+                  disableRipple
+                >
+                  Add to cart
+                </Button>
+              </Grid>
+              <Grid item>
+                <DescAccordion description={description} />
+              </Grid>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item gap={4}>
-          <Typography variant="h4">{title}</Typography>
-          <Box>
-            <Typography>{roundedPrice}</Typography>
-            <Typography>{discountPercent}%</Typography>
-          </Box>
-          <Button size="small" variant="outlined" onClick={handleAddToCart}>
-            Add to cart
-          </Button>
-          <DescAccordion description={description} />
-        </Grid>
-      </Grid>
+      </Paper>
     </>
   );
 }

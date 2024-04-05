@@ -19,11 +19,17 @@ export const themeOne = createTheme({
       dark: "#CCC19B",
       contrastText: "#0d0a0b",
     },
+    success: {
+      main: "#ABF0AA",
+      light: "#D8F5D8",
+      dark: "#92C891",
+      contrastText: "#0d0a0b",
+    },
   },
   typography: {
     fontFamily: `'Public Sans Variable', sans-serif`,
   },
   shape: {
-    borderRadius: 5,
+    borderRadius: 3,
   },
 });
