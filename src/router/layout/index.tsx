@@ -14,7 +14,6 @@ function Layout() {
             flexGrow: 1,
             mb: 6,
             mt: 10,
-            border: "2px dotted red",
           }}
         >
           <Outlet />
