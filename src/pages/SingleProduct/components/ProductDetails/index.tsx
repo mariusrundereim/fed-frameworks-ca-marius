@@ -12,7 +12,8 @@ type ProductCardProps = {
 };
 
 function ProductDetails({ product }: ProductCardProps) {
-  const { title, image, description, roundedPrice, discountPercent } = product;
+  const { title, image, description, discountPercent, discountedPrice } =
+    product;
   const addProductToCart = useStore((state) => state.addProductToCart);
 
   const handleAddToCart = () => {
@@ -31,22 +32,24 @@ function ProductDetails({ product }: ProductCardProps) {
             />
           </Grid>
           {/* Product Details */}
-          <Grid item xs={12} md={6} container direction="column">
-            <Grid item xs={12} direction="column">
-              <Grid item xs>
-                <Typography gutterBottom variant="h4" component="div">
-                  {title}
-                </Typography>
-                <Typography gutterBottom>
-                  {formatCurrencyDirect(roundedPrice)}
-                </Typography>
-                <Typography>{discountPercent}%</Typography>
-              </Grid>
+          <Grid item xs={12} md={6} container direction="column" gap={6}>
+            <Grid item>
+              <Typography gutterBottom variant="h4" component="div">
+                {title}
+              </Typography>
+              <Typography gutterBottom>
+                {formatCurrencyDirect(discountedPrice)}
+              </Typography>
+              <Typography>{discountPercent}%</Typography>
+            </Grid>
+            <Grid container gap={2} direction="column">
               <Grid item>
                 <Button
                   size="large"
                   variant="outlined"
                   onClick={handleAddToCart}
+                  fullWidth
+                  disableRipple
                 >
                   Add to cart
                 </Button>
