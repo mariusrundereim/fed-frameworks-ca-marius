@@ -5,7 +5,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-
+import { formattedDate } from "../../utils/formatDate";
 // Icons
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import PaymentIcon from "@mui/icons-material/Payment";
@@ -24,7 +24,7 @@ function CheckOutList() {
     { primary: "Payed by", secondary: "Vipps", Icon: PaymentIcon },
     {
       primary: "Transaction date",
-      secondary: "04 April 2024, 08:00 AM",
+      secondary: formattedDate,
       Icon: EventIcon,
     },
   ];
