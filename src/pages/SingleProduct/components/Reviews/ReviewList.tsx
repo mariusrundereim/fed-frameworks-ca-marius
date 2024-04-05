@@ -12,28 +12,34 @@ type ReviewListProps = {
 function ReviewList({ product }: ReviewListProps) {
   return (
     <List>
-      {product.reviews.map((review) => (
-        <React.Fragment key={review.id}>
-          <ListItem alignItems="flex-start">
-            <ListItemText
-              primary={review.description}
-              secondary={
-                <>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    color="textPrimary"
-                  >
-                    {review.rating}
-                  </Typography>
-                  — {review.username}
-                </>
-              }
-            />
-          </ListItem>
-          <Divider variant="inset" component="li" />
-        </React.Fragment>
-      ))}
+      {product.reviews.length === 0 ? (
+        <ListItem>
+          <ListItemText primary="No comments" />
+        </ListItem>
+      ) : (
+        product.reviews.map((review) => (
+          <React.Fragment key={review.id}>
+            <ListItem alignItems="flex-start">
+              <ListItemText
+                primary={review.description}
+                secondary={
+                  <>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      color="textPrimary"
+                    >
+                      {review.rating}
+                    </Typography>
+                    — {review.username}
+                  </>
+                }
+              />
+            </ListItem>
+            <Divider variant="inset" component="li" />
+          </React.Fragment>
+        ))
+      )}
     </List>
   );
 }

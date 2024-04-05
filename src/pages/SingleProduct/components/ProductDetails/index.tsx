@@ -20,26 +20,19 @@ function ProductDetails({ product }: ProductCardProps) {
   };
   return (
     <>
-      <Paper elevation={0} sx={{ margin: "auto", flexFlow: 1 }}>
+      <Paper elevation={0} sx={{ margin: "auto" }}>
         <Grid container spacing={2}>
-          <Grid item>
+          <Grid item xs={12} md={6}>
             <CardMedia
               component="img"
               image={image.url}
               title={title}
-              // sx={{ maxWidth: { lg: "440px" } }}
-              sx={{ maxHeight: { md: "50dvh" } }}
+              sx={{ maxHeight: { md: "50vh" } }}
             />
           </Grid>
-          <Grid item xs={12} sm container>
-            <Grid
-              item
-              xs={12}
-              direction="column"
-              sx={{
-                placeSelf: { sm: "auto", md: "center" },
-              }}
-            >
+          {/* Product Details */}
+          <Grid item xs={12} md={6} container direction="column">
+            <Grid item xs={12} direction="column">
               <Grid item xs>
                 <Typography gutterBottom variant="h4" component="div">
                   {title}
@@ -65,30 +58,6 @@ function ProductDetails({ product }: ProductCardProps) {
           </Grid>
         </Grid>
       </Paper>
-      {/* Old */}
-      {/* <Grid container gap={4}>
-        <Grid item>
-          <Box sx={{ width: "100%" }}>
-            <CardMedia
-              component="img"
-              // sx={{ maxHeight: "20rem" }}
-              image={image.url}
-              title={title}
-            />
-          </Box>
-        </Grid>
-        <Grid item gap={4}>
-          <Typography variant="h4">{title}</Typography>
-          <Box>
-            <Typography>{formatCurrencyDirect(roundedPrice)}</Typography>
-            <Typography>{discountPercent}%</Typography>
-          </Box>
-          <Button size="small" variant="outlined" onClick={handleAddToCart}>
-            Add to cart
-          </Button>
-          <DescAccordion description={description} />
-        </Grid>
-      </Grid> */}
     </>
   );
 }
