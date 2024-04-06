@@ -1,7 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { Grid } from "@mui/material";
 import { Container } from "@mui/material";
+
 function Footer() {
   const theme = useTheme();
   return (
@@ -15,15 +16,12 @@ function Footer() {
         }}
       >
         <Container maxWidth="xl">
-          <Grid container spacing={3}>
-            <Grid item md>
-              Logo
+          <Grid container justifyContent="center" alignItems="center">
+            <Grid item xs={12} md={6} display="flex" justifyContent="center">
+              <Typography fontWeight="500">Kaupa</Typography>
             </Grid>
-            <Grid item md={6}>
-              Contact - Cart
-            </Grid>
-            <Grid item md>
-              Build with React & MUI
+            <Grid item xs={12} md={6} display="flex" justifyContent="center">
+              <Typography>Build with React & MUI</Typography>
             </Grid>
           </Grid>
         </Container>
