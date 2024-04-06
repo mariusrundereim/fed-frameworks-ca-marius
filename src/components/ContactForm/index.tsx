@@ -32,7 +32,7 @@ function ContactForm() {
   return (
     <>
       <Box component="form" onSubmit={handleSubmit(onSubmit)}>
-        <Grid container direction="column" gap={4}>
+        <Grid container direction="column" lg={4} gap={2}>
           <Controller
             control={control}
             name="firstName"
@@ -50,6 +50,9 @@ function ContactForm() {
                 onChange={field.onChange}
                 value={field.value}
                 helperText={errors.firstName?.message}
+                FormHelperTextProps={{
+                  sx: { fontSize: "1.10rem" },
+                }}
               />
             )}
           />
