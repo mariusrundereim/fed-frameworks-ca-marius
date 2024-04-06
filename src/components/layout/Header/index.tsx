@@ -87,7 +87,13 @@ function Header() {
               </Menu>
             </Box>
             {/* Desktop Nav */}
-            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                marginLeft: 3,
+              }}
+            >
               {pages.map((page) => (
                 <Link
                   to={`/${page.toLowerCase()}`}

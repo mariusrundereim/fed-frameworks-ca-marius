@@ -10,21 +10,22 @@ function Hero() {
     <>
       <Box
         component={"section"}
+        p={2}
         sx={{
-          borderRadius: theme.shape.borderRadius,
+          borderRadius: "16px",
           backgroundColor: theme.palette.primary.light,
-          minHeight: "25rem",
         }}
       >
-        <SearchBarNew placeholder="Search.." data={products} />
         <Box>
-          <Typography variant="h3">Your One-Stop-Shop</Typography>
+          <Typography variant="h5" fontWeight={"600"}>
+            Online E-Commerce Store
+          </Typography>
           <Typography variant="h6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ea
-            aut, quae sit ipsam optio aliquid commodi sapiente iste dolorem
-            nostrum fugit expedita?
+            Discover an exquisite selection of fashion, cutting-edge
+            electronics, playful toys, and essential accessories.
           </Typography>
         </Box>
+        <SearchBarNew placeholder="Search.." data={products} />
       </Box>
     </>
   );
