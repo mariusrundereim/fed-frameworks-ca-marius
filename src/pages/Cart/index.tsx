@@ -106,7 +106,7 @@ function Cart() {
                     startIcon={<ArrowBackIosIcon />}
                     fullWidth
                   >
-                    Continue Shopping
+                    {cart.length === 0 ? "Start Shopping" : "Continue Shopping"}
                   </Button>
                 </Link>
                 <Button
