@@ -30,6 +30,13 @@ export const themeOne = createTheme({
     fontFamily: `'Public Sans Variable', sans-serif`,
   },
   shape: {
-    borderRadius: 3,
+    borderRadius: 25,
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true,
+      },
+    },
   },
 });

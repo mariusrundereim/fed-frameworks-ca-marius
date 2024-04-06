@@ -10,6 +10,9 @@ import { Typography } from "@mui/material";
 import { Rating } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Stack } from "@mui/material";
+import { Chip } from "@mui/material";
+import PercentIcon from "@mui/icons-material/Percent";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { formatCurrencyDirect } from "../../../utils/formatCurrency";
 type ProductCardProps = {
   product: Product;
@@ -31,7 +34,7 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <>
-      <Card elevation={5} sx={{ width: 1 }}>
+      <Card elevation={1} sx={{ width: 1 }}>
         <Box sx={{ width: 1, pt: "100%", position: "relative" }}>
           <CardMedia
             component="img"
@@ -55,7 +58,7 @@ function ProductCard({ product }: ProductCardProps) {
               name="read-only"
               value={rating}
               precision={0.5}
-              size="small"
+              size="medium"
               readOnly
             />
           ) : (
@@ -67,12 +70,18 @@ function ProductCard({ product }: ProductCardProps) {
             {title}
           </Typography>
           <Stack direction="row" spacing={2}>
-            <Typography variant="body1" color="text.secondary">
+            <Typography variant="h6" color="text.secondary">
               {formatCurrencyDirect(roundedDiscPrice)}
             </Typography>
 
             {discountPercent ? (
-              <Typography>{discountPercent} %</Typography>
+              <Chip
+                icon={<PercentIcon fontSize="small" />}
+                deleteIcon={<PercentIcon fontSize="small" />}
+                label={discountPercent}
+                variant="outlined"
+                color="primary"
+              />
             ) : (
               ""
             )}
@@ -80,10 +89,12 @@ function ProductCard({ product }: ProductCardProps) {
         </CardContent>
         <CardActions>
           <Button
-            size="small"
+            size="large"
             variant="contained"
             fullWidth
             disableRipple
+            disableElevation
+            startIcon={<AddShoppingCartIcon />}
             onClick={handleAddToCart}
           >
             Add to Cart

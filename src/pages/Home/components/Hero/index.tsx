@@ -12,7 +12,7 @@ function Hero() {
         component={"section"}
         p={2}
         sx={{
-          borderRadius: theme.shape.borderRadius,
+          borderRadius: "16px",
           backgroundColor: theme.palette.primary.light,
         }}
       >

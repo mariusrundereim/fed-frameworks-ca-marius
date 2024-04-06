@@ -28,7 +28,7 @@ function ProductDetails({ product }: ProductCardProps) {
               component="img"
               image={image.url}
               title={title}
-              sx={{ maxHeight: { md: "50vh" } }}
+              sx={{ maxHeight: { md: "50vh" }, borderRadius: "20px" }}
             />
           </Grid>
           {/* Product Details */}
