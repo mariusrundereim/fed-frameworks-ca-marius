@@ -13,7 +13,8 @@ The application includes several key features that create a comprehensive shoppi
 
 - MUI
 - Zustand
-- React Router Form
+- React Router
+- React Hook Form
 
 ## Application Page
 
