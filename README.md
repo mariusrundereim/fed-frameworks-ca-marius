@@ -11,7 +11,7 @@ This project aims to apply React knowledge by building an e-commerce store, util
 
 - MUI
 - Zustand
-- React Router Dom
+- React Router Form
 
 ## Application Page
 
@@ -48,10 +48,9 @@ npm run dev
 ## Extra features
 
 - Discount will show the saved amount directly on the cart page. This is calculated using the difference between `price` and `discountedPrice`.
-- Dynamically displaying discount information, emphasizing the value offered on specific products.
+- Checkout Page with dynamically `total price` and `date` when your purchased have been confirmed.
 - Currency Format as `Norwegian Krone`
 
 ## Links
 
 Deployed: [Netlify](https://brilliant-madeleine-06f016.netlify.app).
-Design: [Figma](https://brilliant-madeleine-06f016.netlify.app).
