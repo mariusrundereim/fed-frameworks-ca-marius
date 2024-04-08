@@ -1,8 +1,10 @@
-# Store Application
+# E-Commerce application
 
 This project aims to apply React knowledge by building an e-commerce store, utilizing the API from https://v2.api.noroff.dev/online-shop. 
 
 The application includes several key features that create a comprehensive shopping experience.
+
+![Cover](/assets/kaupa_cover_github.png)
 
 ## Build with:
 

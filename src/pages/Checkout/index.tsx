@@ -8,12 +8,6 @@ import { useTheme } from "@mui/material";
 import CheckOutList from "../../components/List";
 function CheckoutPage() {
   const theme = useTheme();
-  // const clearCart = useStore((state) => state.clearCart);
-
-  // useEffect(() => {
-  //   clearCart();
-  //   // other code if needed
-  // }, [clearCart]);
 
   return (
     <>
@@ -29,7 +23,7 @@ function CheckoutPage() {
                 justifyContent: "center",
                 alignItems: "center",
                 gap: 4,
-                borderRadius: theme.shape.borderRadius,
+                borderRadius: 1,
               }}
             >
               <CheckCircleIcon fontSize="large" />
