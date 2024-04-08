@@ -64,7 +64,8 @@ function CartCard({ item, product }: CartCardProps) {
             display={"flex"}
             alignItems={"center"}
             justifyContent={"space-between"}
-            gap={2}
+            gap={4}
+            width={"340px"}
           >
             <Box>
               <ButtonGroup
